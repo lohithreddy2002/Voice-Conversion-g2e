@@ -1,0 +1,24 @@
+data:
+    train_path: './train_tisv'
+    test_path: './test_tisv'
+    data_preprocessed: !!bool "true" 
+    sr: 16000
+    nfft: 1024 # For mel spectrogram preprocess
+    window: 0.05 # (s)
+    hop: 0.0125 # (s)   
+    nmels: 80 #Number of mel energies
+    tisv_frame: 150 #Max number of time steps in input after preprocess
+    fmin: 55
+    fmax: 8000
+---   
+model:
+    hidden: 256 #Number of LSTM hidden layer units
+    num_layer: 3 #Number of LSTM layers
+    proj: 64 #Embedding size
+    model_name: 'baseline' #Model path for testing, inference, or resuming training
+    loss: 'softmax'
+    da: false
+    da_on: 'language'
+    da_startpoint: 0
+    lang_emb_dim: 32
+    architecture: 'LSTM'
